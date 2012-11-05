@@ -62,14 +62,23 @@ class Presentation
   
   /**
    * Moves the virtual camera over the current slide.
+   * You can optionally specify how long it takes to transition to this slide.
    */
-  void focusCurrentSlide()
-  {
+  void focusCurrentSlide([double transitionDuration = 0.7])
+  { 
+    for(var slide in this.slides)
+    {
+      slide.element.style
+      ..transitionDuration = "${transitionDuration}s"
+      ..opacity = "0.5";
+    }
     var slide = this.slides[currentSlideIndex];
+    slide.element.style.opacity = "1.0";
+   
     //focus on the center of the slide
     var xOffset = slide.element.clientWidth ~/ 2;
     var yOffset = slide.element.clientHeight ~/ 2;
-    this.cam.move( 0.7, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z+ yOffset, slide.rotation.x, slide.rotation.y, slide.rotation.z);
+    this.cam.move( transitionDuration, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z + yOffset, slide.rotation.x, slide.rotation.y, slide.rotation.z);
   }
   
   /**
@@ -83,7 +92,7 @@ class Presentation
     currentSlideIndex++;
     if (currentSlideIndex >= slides.length)
       currentSlideIndex = 0;
-    focusCurrentSlide();
+    focusCurrentSlide(0.7);
   }
   
   /**
@@ -97,7 +106,7 @@ class Presentation
     currentSlideIndex--;
     if (currentSlideIndex < 0)
       currentSlideIndex = slides.length - 1;
-    focusCurrentSlide();
+    focusCurrentSlide(0.3);
   }
   
   /**
@@ -108,6 +117,6 @@ class Presentation
     if (slides.length < 1)
       return;
     currentSlideIndex = 0;
-    focusCurrentSlide();
+    focusCurrentSlide(0.0);
   }
 }

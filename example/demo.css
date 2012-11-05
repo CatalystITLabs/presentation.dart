@@ -28,20 +28,6 @@ p {
   -webkit-perspective: 800px;
 }
 
-/* The scene is used to collect items in 3d space to render */ 
-#scene {
-  width: 1px;
-  height: 1px;
-  position: relative;
-  
-  /* preserve-3d will make objects in the scene maintain their positions and rotations relative to the scene and thus eachother */
-  transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  /*perpective in here would mess up z coordinate tracking of the camera*/
-}
-
 .object {
   font-size: 10em;
   line-height: 0.9em;
