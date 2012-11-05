@@ -1,0 +1,5 @@
+name:  presentation
+description:  A sample application
+
+#dependencies:
+#  unittest: { sdk: unittest }

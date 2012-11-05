@@ -1,0 +1,50 @@
+
+body {
+  background-color: #F8F8F8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  /*line-height: 1.2em;*/
+  margin: 15px;
+}
+
+p {
+  color: #333;
+}
+
+/* render acts as a window into the 3d scene and controls the perspective of the virtual "camera" */
+#render {
+  width: 1200px;
+  height: 500px;
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  
+  perspective: 800px;
+  -ms-perspective: 800px;
+  -moz-perspective: 800px;
+  -webkit-perspective: 800px;
+}
+
+/* The scene is used to collect items in 3d space to render */ 
+#scene {
+  width: 1px;
+  height: 1px;
+  position: relative;
+  
+  /* preserve-3d will make objects in the scene maintain their positions and rotations relative to the scene and thus eachother */
+  transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  /*perpective in here would mess up z coordinate tracking of the camera*/
+}
+
+.object {
+  font-size: 10em;
+  line-height: 0.9em;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+}
