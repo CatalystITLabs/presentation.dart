@@ -15,9 +15,9 @@ class Presentation
   int currentSlideIndex = 0;
   Camera cam;
   
-  Presentation(Element viewBox, Element scene)
+  Presentation(Element viewBox)
   {
-    this.cam = new Camera(viewBox, scene);
+    this.cam = new Camera(viewBox);
   }
   
   /**
@@ -27,8 +27,8 @@ class Presentation
   {
     var slideElement = new DivElement();
     slideElement.innerHTML = Html;
-    slideElement.style.height = "1px";
-    slideElement.style.width = "1px";
+    //slideElement.style.height = "1px";
+    //slideElement.style.width = "1px";
     return makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
   }
   
@@ -65,21 +65,11 @@ class Presentation
    */
   void focusCurrentSlide()
   {
-    
-    /*
-    TODO: focus on center of slide
-    var boundary = this.element.getBoundingClientRect();
-    x = renderwidth / 2 - boundary.width;
-    y = renderHeight / 2 - boundary.height;
-    */
     var slide = this.slides[currentSlideIndex];
-    //var xOffset = slide.element.clientWidth ~/ 2;
-    //var yOffset = slide.element.clientHeight ~/ 2;
-    var xOffset = 0;
-    var yOffset = 0;
-    print (xOffset);
-    print (yOffset);
-    this.cam.move(slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z+ yOffset, slide.rotation.x, slide.rotation.y, slide.rotation.z);
+    //focus on the center of the slide
+    var xOffset = slide.element.clientWidth ~/ 2;
+    var yOffset = slide.element.clientHeight ~/ 2;
+    this.cam.move( 0.7, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z+ yOffset, slide.rotation.x, slide.rotation.y, slide.rotation.z);
   }
   
   /**
@@ -110,4 +100,14 @@ class Presentation
     focusCurrentSlide();
   }
   
+  /**
+   * focus on the first slide
+   */
+  void start()
+  {
+    if (slides.length < 1)
+      return;
+    currentSlideIndex = 0;
+    focusCurrentSlide();
+  }
 }
