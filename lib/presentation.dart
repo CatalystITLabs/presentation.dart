@@ -1,10 +1,10 @@
 library presentation;
 import 'dart:html';
 import 'dart:math';
-part "vec3.dart";
-part "object.dart";
-part "slide.dart";
-part "camera.dart";
+part "src/vec3.dart";
+part "src/object.dart";
+part "src/slide.dart";
+part "src/camera.dart";
 
 /**
  * The Presentation class transitions through a series of slides and maintains them as a 3d scene.

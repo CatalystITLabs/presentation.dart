@@ -1,5 +1,7 @@
 import 'dart:html';
-import 'package:lib/presentation.dart';
+//import 'package:presentation/presentation.dart';
+//package self-referenceing is broken in dart at the moment it seems
+import '../lib/presentation.dart';
 
 num rotatePos = 0;
 
