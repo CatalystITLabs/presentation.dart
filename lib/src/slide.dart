@@ -6,7 +6,7 @@ part of presentation;
 class Slide extends Object {
   Element element;
   
-  Slide(this.element, double scale, double x,double y,double z,double h,double p,double r) : super(scale, x, y, z, h, p, r)
+  Slide(this.element, num scale, num x,num y,num z,num h,num p,num r) : super(scale, x, y, z, h, p, r)
   {
     this.element.classes.add("object");
     this.element.style

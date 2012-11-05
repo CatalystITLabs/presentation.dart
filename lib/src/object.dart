@@ -3,7 +3,7 @@ part of presentation;
 
 ///Any item with 3d position and rotation
 class Object {
-  double scale;
+  num scale;
   // home position
   Vec3 position;
   // home rotation
@@ -12,7 +12,7 @@ class Object {
   // pitch (x axis rotation)
   // roll (z axis rotation)
   
-  Object(this.scale, double x, double y, double z, double heading, double pitch, double roll)
+  Object(this.scale, num x, num y, num z, num heading, num pitch, num roll)
   {
     position = new Vec3(x,y,z);
     rotation = new Vec3(pitch, heading, roll);

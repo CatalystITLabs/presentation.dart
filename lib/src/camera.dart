@@ -10,6 +10,7 @@ class Camera extends Object {
   
   Camera(this.viewBox) : super(1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
   {
+    //build and style the scene element
     viewBox.insertAdjacentElement("beforeEnd", scene);
     this.centerFocalPoint();
     scene.style
@@ -20,18 +21,24 @@ class Camera extends Object {
     ..transformStyle = "preserve-3d";
   }
   
+  /**
+   * get the width of the viewBox
+   */
   int getXResolution()
   {
     return viewBox.clientWidth;
   }
   
+  /**
+   * get the height of the viewBox
+   */
   int getYResolution()
   {
     return viewBox.clientHeight;
   }
   
   /**
-   * moves the scene to the center of the viewbox instead of the top left
+   * moves the scene to the center of the viewBox instead of the top left
    */
   void centerFocalPoint()
   {
@@ -43,7 +50,7 @@ class Camera extends Object {
   /**
    * Reposition the virtual camera to a new place and rotation
    */
-  void move(double time, double x, double y, double z, double xr, double yr, double zr)
+  void move(num time, num x, num y, num z, num xr, num yr, num zr)
   {
     //We simulate moving the camera by actually moving and rotating the scene.
       
