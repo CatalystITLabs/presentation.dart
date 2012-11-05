@@ -1,5 +1,5 @@
 name:  presentation
-description:  A sample application
+description:  Presentation framework using css3 3d animations
 
 #dependencies:
 #  unittest: { sdk: unittest }
