@@ -43,7 +43,8 @@ class Camera extends Object {
   void centerFocalPoint()
   {
     this.scene.style
-    ..marginLeft = "${getXResolution()~/2}px"
+    ..marginLeft = "auto"
+    ..marginRight = "auto"
     ..marginTop = "${getYResolution()~/2}px";
   }
   

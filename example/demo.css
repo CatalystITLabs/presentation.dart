@@ -14,9 +14,10 @@ p {
 
 /* render acts as a window into the 3d scene and controls the perspective of the virtual "camera" */
 #render {
-  width: 1200px;
+  width: 95%;
   height: 500px;
   position: relative;
+  margin: auto;
   border: 1px solid #ccc;
   background-color: #DDDDDD;
   overflow-y:hidden;
