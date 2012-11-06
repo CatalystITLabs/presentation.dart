@@ -14,7 +14,9 @@ part "src/basic_transition.dart";
 class Presentation
 {
   List<Slide> slides = new List<Slide>();
-  int currentSlideIndex = 0;
+  List<Transition> transitions = new List<Transition>();
+  int currentTransitionIndex = 0;
+  Slide currentSlide;
   Camera cam;
   
   Presentation(Element viewBox)
@@ -66,7 +68,7 @@ class Presentation
    * Moves the virtual camera over the current slide.
    * You can optionally specify how long it takes to transition to this slide.
    */
-  void focusCurrentSlide([num transitionDuration = 0.7])
+  void highlightCurrentSlide([num transitionDuration = 0.7])
   { 
     for(var slide in this.slides)
     {
@@ -75,49 +77,64 @@ class Presentation
       ..transition ="opacity ${transitionDuration}s ease-in-out"
       ..opacity = "0.4";
     }
-    var slide = this.slides[currentSlideIndex];
+    var slide = this.currentSlide;
     slide.element.style.opacity = "1.0";
    
-    //focus on the center of the slide
-    var xOffset = slide.element.clientWidth ~/ 2;
-    var yOffset = slide.element.clientHeight ~/ 2;
-    this.cam.move( transitionDuration, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z + yOffset, slide.rotation.x, slide.rotation.y, slide.rotation.z);
   }
   
-  /**
-   * Advances the presentation to the next slide.
-   */
   void next()
   {
-    if (slides.length < 1)
+    if (transitions.length < 1)
       return;
-    currentSlideIndex++;
-    if (currentSlideIndex >= slides.length)
-      currentSlideIndex = 0;
-    focusCurrentSlide(0.7);
+    print("next");
+    var transition = this.transitions[currentTransitionIndex];
+    var duration = transition.forward(cam);
+    currentSlide = transition.to;
+    highlightCurrentSlide(duration);
+    
+    currentTransitionIndex++;
+    if (currentTransitionIndex >= transitions.length)
+      currentTransitionIndex = 0;
   }
   
-  /**
-   * Returns the presentation to the previous slide.
-   */
   void previous()
   {
-    if (slides.length < 1)
+    if (transitions.length < 1)
       return;
-    currentSlideIndex--;
-    if (currentSlideIndex < 0)
-      currentSlideIndex = slides.length - 1;
-    focusCurrentSlide(0.3);
+    print("previous");
+      
+    var transition = this.transitions[currentTransitionIndex];
+    var duration = transition.reverse(cam);
+    currentSlide = transition.from;
+    highlightCurrentSlide(duration);
+    
+    
+    currentTransitionIndex--;
+    if (currentTransitionIndex < 0)
+      currentTransitionIndex =  transitions.length-1;
+  }
+ 
+  void useDefaultTransitions()
+  {
+    this.transitions.clear();
+    if (slides.length > 1)
+    {
+      //slides.last was not returning a Slide type
+      var lastSlide = slides[slides.length-1];
+      for (var slide in this.slides)
+      {
+        var transition = new BasicTransition(slide, lastSlide);
+        lastSlide = slide;
+        transitions.add(transition);
+      }
+    }
   }
   
-  /**
-   * focus on the first slide
-   */
   void start()
   {
-    if (slides.length < 1)
-      return;
-    currentSlideIndex = 0;
-    focusCurrentSlide(0.0);
+    if (transitions.length == 0 && slides.length > 1)
+      useDefaultTransitions();
+    if (transitions.length > 0)
+      next();
   }
 }
