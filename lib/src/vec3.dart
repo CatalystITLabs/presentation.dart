@@ -3,9 +3,9 @@ part of presentation;
 ///A 3 dimensional vector for css3 manipulations
 class Vec3
 {
-  double x;
-  double y;
-  double z;
+  num x;
+  num y;
+  num z;
   
   ///construct from xyz components
   Vec3(this.x, this.y, this.z);
@@ -17,16 +17,16 @@ class Vec3
   }
   
   ///gets the length of the vector
-  double get length
+  num get length
   {
-    double sum = 0.0;
+    dounumble sum = 0.0;
     sum += (x * x);
     sum += (y * y);
     sum += (z * z);
     return sqrt(sum);
   }
   
-  double getRadians(double degrees)
+  num getRadians(num degrees)
   {
     return degrees * PI / 180;
   }
