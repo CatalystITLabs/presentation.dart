@@ -19,7 +19,7 @@ class Vec3
   ///gets the length of the vector
   num get length
   {
-    dounumble sum = 0.0;
+    num sum = 0.0;
     sum += (x * x);
     sum += (y * y);
     sum += (z * z);
