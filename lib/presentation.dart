@@ -47,21 +47,23 @@ class Presentation
   /**
    * Creates a new Slide object from a String of html and adds it to the end of the presentation
    */
-  void addHtmlSlide(String Html, num scale, num x, num y, num z, num h, num p, num r)
+  Slide addHtmlSlide(String Html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromHtml(Html, scale, x, y, z, h, p, r);
     this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.slides.add(slide);
+    return slide;
   }
   
   /**
    * Creates a new Slide object from a DOM element and adds it to the end of the presentation
    */
-  void addElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
+  Slide addElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
     this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
     this.slides.add(slide);
+    return slide;
   }
   
   /**
@@ -79,7 +81,6 @@ class Presentation
     }
     var slide = this.currentSlide;
     slide.element.style.opacity = "1.0";
-   
   }
   
   void next()
