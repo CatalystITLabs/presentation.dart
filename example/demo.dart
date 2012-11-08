@@ -6,7 +6,7 @@ import '../lib/presentation.dart';
 num rotatePos = 0;
 
 void main() {
-  var presentation = new Presentation(query("#render"));
+  var presentation = new BasicSlideShow(query("#render"));
   
   //Add a series of slides
   presentation.addHtmlSlide("Slide1", 1.0, 0.0,   0.0,    20000.0,   0.0,0.0,0.0);

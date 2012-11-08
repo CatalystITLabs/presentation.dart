@@ -14,9 +14,21 @@ class Slide extends Object {
     ..transformStyle = "preserve-3d";
     this.setTransform();
   }
-  
+
   setTransform()
   {
     element.style.transform =  this.transformString;
   }
+
+  /**
+   * Performs actions when this slide gains focus
+   * Returns the duration of the actions performed
+   */
+  num onGainFocus();
+  
+  /**
+   *  Performs actions when this slide loses focus
+   *  Returns the duration of the actions performed
+   */
+  num onLoseFocus();
 }
