@@ -17,18 +17,22 @@ class Slide extends Object {
 
   setTransform()
   {
-    element.style.transform =  this.transformString;
+    //var xOffset = element.clientWidth ~/ 2;
+    //var yOffset = element.clientHeight ~/ 2;
+    //element.style.transform = "scale($scale) translateX(${(position.x-xOffset).toInt()}px) translateY(${(position.y-yOffset).toInt()}px) translateZ(${position.z.toInt()}px) rotateX(${rotation.x.toInt()}deg) rotateY(${rotation.y.toInt()}deg) rotateZ(${rotation.z.toInt()}deg)";
+    // height and width report as 0 here for some reason
+    element.style.transform = this.transformString;
   }
 
   /**
    * Performs actions when this slide gains focus
    * Returns the duration of the actions performed
    */
-  num onGainFocus();
+  num onGainFocus([num transitionDuration = 0.7]);
   
   /**
    *  Performs actions when this slide loses focus
    *  Returns the duration of the actions performed
    */
-  num onLoseFocus();
+  num onLoseFocus([num transitionDuration = 0.7]);
 }

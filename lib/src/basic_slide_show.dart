@@ -17,7 +17,9 @@ class BasicSlideShow extends SlideShow
     //focus on the center of the slide
     var xOffset = slide.element.clientWidth ~/ 2;
     var yOffset = slide.element.clientHeight ~/ 2;
-    this.cam.move( transitionDuration, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z + yOffset, slide.rotation.x, slide.rotation.y, slide.rotation.z);
+    //var xOffset = 0;
+    //var yOffset = 0;
+    this.cam.move( transitionDuration, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z, slide.rotation.x, slide.rotation.y, slide.rotation.z);
   }
   
   /**
