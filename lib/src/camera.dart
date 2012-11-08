@@ -14,8 +14,8 @@ class Camera extends Object {
     viewBox.insertAdjacentElement("beforeEnd", scene);
     this.centerFocalPoint();
     scene.style
-    ..height = "1px"
-    ..width = "1px"
+    ..height = viewBox.clientHeight
+    ..width = "100%"
     ..position = "relative"
     //preserve-3d will make objects in the scene maintain their positions and rotations relative to the scene and thus eachother
     ..transformStyle = "preserve-3d";
@@ -50,6 +50,8 @@ class Camera extends Object {
     var sceneScale = 1.0;
     var translateScale = 1.0;
     var originScale = 1;
+    var xOffset = this.scene.clientWidth ~/ 2;
+    var yOffset = this.scene.clientHeight ~/ 2;
     
     scene.style   
     ..transition = "${time}s"
@@ -59,11 +61,12 @@ class Camera extends Object {
     ..transformOriginX = "${(x * originScale).toInt()}px"
     ..transformOriginY = "${(y * originScale).toInt()}px"
     ..transformOriginZ = "${(z * originScale).toInt()}px"
+    
+
 
     //Rather than move the camera to the left we have to move the scene to the right etc.
     //Note that rotations have to be done in the reverse order to get back to (0,0,0)
-    //..transform = "scale($sceneScale) translateX(${(-x).toInt()}px) translateY(${(-y*translateScale).toInt()}px) translateZ(${(-z*translateScale).toInt()}px) rotateZ(${-zr.toInt()}deg) rotateY(${-yr.toInt()}deg) rotateX(${-xr.toInt()}deg)";
-    ..transform = "scale($sceneScale) translateX(${(-x).toInt()}px) translateY(${(-y*translateScale).toInt()}px) translateZ(${(-z*translateScale).toInt()}px) rotateZ(${-zr.toInt()}deg) rotateY(${-yr.toInt()}deg) rotateX(${-xr.toInt()}deg)";
+    ..transform = "scale($sceneScale) translateX(${(-x+xOffset).toInt()}px) translateY(${(-y+yOffset).toInt()}px) translateZ(${(-z).toInt()}px) rotateZ(${-zr.toInt()}deg) rotateY(${-yr.toInt()}deg) rotateX(${-xr.toInt()}deg)";
   }
   
   ///Transition the camera to view a slide centered and normalized

@@ -35,7 +35,8 @@ Element testEmbedContent()
   //elem.src="https://github.com/StephenLujan/presentation.dart"; //Github disallows iframes :(
   //elem.src="http://stephenlujan.com/";
   elem.src="http://catalystitservices.com/";
-  elem.width="1150";
+  //elem.width="1150";
+  elem.width="90%";
   elem.height="500";
   return elem;
 }
