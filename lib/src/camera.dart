@@ -14,7 +14,7 @@ class Camera extends Object {
     viewBox.insertAdjacentElement("beforeEnd", scene);
     this.centerFocalPoint();
     scene.style
-    ..height = viewBox.clientHeight
+    ..height = "${viewBox.clientHeight}"
     ..width = "100%"
     ..position = "relative"
     //preserve-3d will make objects in the scene maintain their positions and rotations relative to the scene and thus eachother

@@ -36,15 +36,16 @@ Element testEmbedContent()
   //elem.src="http://stephenlujan.com/";
   elem.src="http://catalystitservices.com/";
   //elem.width="1150";
-  elem.width="90%";
+  elem.width="95%";
   elem.height="500";
   return elem;
 }
+
 void main() {
   var presentation = new BasicSlideShow(query("#render"));
   
-  //Add a series of slides
   
+  //Add a series of slides
   presentation.addHtmlSlide("Slide1", 1.0, 0.0,   0.0,    20000.0, 0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide2", 1.0, -300.0,0.0,    0.0,     0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide3", 1.0, 300.0, 0.0,    0.0,     0.0,0.0,0.0);
@@ -54,10 +55,10 @@ void main() {
   presentation.addHtmlSlide("Slide7", 1.0, -700.0,-150.0, 150.0,   0.0,0.0,90.0);
   presentation.addHtmlSlide("Slide8", 1.0, -100.0,100.0,  150.0,   70.0,0.0,0.0);
   presentation.addHtmlSlide("Slide9", 1.0, 150.0, -300.0, 300.0,   0.0,70.0,0.0);
-  presentation.addHtmlSlide("Slide10",1.0,  700.0, 150.0,  300.0,  70.0,70.0,450.0);
+  presentation.addHtmlSlide("Slide10",1.0, 700.0, 150.0,  300.0,  70.0,70.0,450.0);
   presentation.addElementSlide(testEmbedContent(), 1.0, 400.0, 300.0,  -600.0,   30.0,0.0,360.0);
   presentation.addElementSlide(testScrollBarContent(), 1.0, -500, 500, 500, 0, 0, 0);
-    
+  
   /*
   presentation.addHtmlSlide("Slide1", 1.0, -300.0,  -300.0, -300.0,  0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide2", 1.0, -300.0,  -300.0, -300.0,  90.0,0.0,0.0);
