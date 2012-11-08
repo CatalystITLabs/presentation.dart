@@ -6,7 +6,7 @@ class BasicSlideShow extends SlideShow
   
   int currentSlideIndex = 0;
   
-  Slide get currentSlide()
+  Slide get currentSlide
   {
     return slides[currentSlideIndex];
   }

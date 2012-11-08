@@ -22,7 +22,7 @@ class TransitionSlideShow extends SlideShow
     
     // updateSlides
     currentSlide = transition.to;
-    this.highlightSlide(this.currentSlide, duration);
+    this.onFocus(this.currentSlide, duration);
  
     // get new transition
     currentTransitionIndex++;
@@ -41,7 +41,7 @@ class TransitionSlideShow extends SlideShow
     
     // update slides
     currentSlide = transition.from;
-    highlightCurrentSlide(duration);
+    this.onFocus(this.currentSlide, duration);
     
     // get new transition
     currentTransitionIndex--;

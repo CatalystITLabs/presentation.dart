@@ -16,7 +16,7 @@ abstract class SlideShow
   /// this virtual camera controls the position and orientation of the viewer relative to the 3d scene 
   Camera cam;
   
-  Slide get currentSlide();
+  Slide get currentSlide;
   
   SlideShow(Element viewBox)
   {
