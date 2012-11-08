@@ -3,7 +3,7 @@ part of presentation;
 /**
  * a series of slides collected and maintains as a 3d scene.
  */
-class SlideShow
+abstract class SlideShow
 {
   List<Slide> slides = new List<Slide>();
   Camera cam;
@@ -54,23 +54,16 @@ class SlideShow
   }
   
   /**
-   * Highlight the input slide by fading it into opacity and the others into transparency.
-   * This default behavior for highlighting can be added to or replaced by overriding.
+   * Focus on the input slide
    */
-  void highlightSlide(Slide slide, [num transitionDuration = 0.7])
+  void onFocus(Slide slide, [num transitionDuration = 0.7])
   { 
     for(var otherSlide in this.slides)
     {
-      //reduce opacity of all slides
-      otherSlide.element.style
-      //..transitionDuration = "${transitionDuration}s"
-      ..transition ="opacity ${transitionDuration}s ease-in-out"
-      ..opacity = "0.4";
+      if (slide != otherSlide)
+        otherSlide.onLoseFocus(transitionDuration);
     }
-    //make input slide opaque
-    slide.element.style
-    ..transition ="opacity ${transitionDuration}s ease-in-out"
-    ..opacity = "1.0";
+    slide.onGainFocus(transitionDuration);
   }
   
   /**

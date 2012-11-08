@@ -28,11 +28,21 @@ class Slide extends Object {
    * Performs actions when this slide gains focus
    * Returns the duration of the actions performed
    */
-  num onGainFocus([num transitionDuration = 0.7]);
+  num onGainFocus([num transitionDuration = 0.7])
+  {
+    element.style
+    ..transition ="opacity ${transitionDuration}s ease-in-out"
+    ..opacity = "1.0";
+  }
   
   /**
    *  Performs actions when this slide loses focus
    *  Returns the duration of the actions performed
    */
-  num onLoseFocus([num transitionDuration = 0.7]);
+  num onLoseFocus([num transitionDuration = 0.7])
+  {
+    element.style
+    ..transition ="opacity ${transitionDuration}s ease-in-out"
+    ..opacity = "0.4";
+  }
 }

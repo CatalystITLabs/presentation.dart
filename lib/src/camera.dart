@@ -21,25 +21,19 @@ class Camera extends Object {
     ..transformStyle = "preserve-3d";
   }
   
-  /**
-   * get the width of the viewBox
-   */
+  /// get the width of the viewBox
   int getXResolution()
   {
     return viewBox.clientWidth;
   }
   
-  /**
-   * get the height of the viewBox
-   */
+  /// get the height of the viewBox
   int getYResolution()
   {
     return viewBox.clientHeight;
   }
   
-  /**
-   * moves the scene to the center of the viewBox instead of the top left
-   */
+  /// moves the scene to the center of the viewBox instead of the top left
   void centerFocalPoint()
   {
     this.scene.style
@@ -48,9 +42,7 @@ class Camera extends Object {
     ..marginTop = "${getYResolution()~/2}px";
   }
   
-  /**
-   * Reposition the virtual camera to a new place and rotation
-   */
+   ///Reposition the virtual camera to a new place and rotation
   void move(num time, num x, num y, num z, num xr, num yr, num zr)
   {
     //We simulate moving the camera by actually moving and rotating the scene.
@@ -70,6 +62,16 @@ class Camera extends Object {
 
     //Rather than move the camera to the left we have to move the scene to the right etc.
     //Note that rotations have to be done in the reverse order to get back to (0,0,0)
+    //..transform = "scale($sceneScale) translateX(${(-x).toInt()}px) translateY(${(-y*translateScale).toInt()}px) translateZ(${(-z*translateScale).toInt()}px) rotateZ(${-zr.toInt()}deg) rotateY(${-yr.toInt()}deg) rotateX(${-xr.toInt()}deg)";
     ..transform = "scale($sceneScale) translateX(${(-x).toInt()}px) translateY(${(-y*translateScale).toInt()}px) translateZ(${(-z*translateScale).toInt()}px) rotateZ(${-zr.toInt()}deg) rotateY(${-yr.toInt()}deg) rotateX(${-xr.toInt()}deg)";
+  }
+  
+  ///Transition the camera to view a slide centered and normalized
+  focusOnSlide(Slide slide, num time)
+  {
+    //center view on the center of the slide
+    var xOffset = slide.element.clientWidth ~/ 2;
+    var yOffset = slide.element.clientHeight ~/ 2;
+    move( time, slide.position.x + xOffset, slide.position.y + yOffset, slide.position.z, slide.rotation.x, slide.rotation.y, slide.rotation.z);
   }
 }
