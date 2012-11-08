@@ -13,14 +13,18 @@ class TransitionSlideShow extends SlideShow
   
   void next()
   {
+    print (transitions.length);
     if (transitions.length < 1)
       return;
-    print("next");
+    // run transition
     var transition = this.transitions[currentTransitionIndex];
     var duration = transition.forward(cam);
+    
+    // updateSlides
     currentSlide = transition.to;
     this.highlightSlide(this.currentSlide, duration);
-    
+ 
+    // get new transition
     currentTransitionIndex++;
     if (currentTransitionIndex >= transitions.length)
       currentTransitionIndex = 0;
@@ -30,13 +34,16 @@ class TransitionSlideShow extends SlideShow
   {
     if (transitions.length < 1)
       return;
-    print("previous");
-      
+    
+    // run transition
     var transition = this.transitions[currentTransitionIndex];
     var duration = transition.reverse(cam);
+    
+    // update slides
     currentSlide = transition.from;
     highlightCurrentSlide(duration);
     
+    // get new transition
     currentTransitionIndex--;
     if (currentTransitionIndex < 0)
       currentTransitionIndex =  transitions.length-1;

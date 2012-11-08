@@ -6,13 +6,18 @@ class BasicSlideShow extends SlideShow
   
   int currentSlideIndex = 0;
   
+  Slide get currentSlide()
+  {
+    return slides[currentSlideIndex];
+  }
+  
   /**
    * Moves the virtual camera over the current slide.
    * You can optionally specify how long it takes to transition to this slide.
    */
   void focusCurrentSlide([num transitionDuration = 0.7])
   { 
-    var slide = this.slides[currentSlideIndex];
+    var slide = this.currentSlide;
     this.onFocus(slide, transitionDuration);
     
     this.cam.focusOnSlide(slide, transitionDuration);

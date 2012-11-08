@@ -5,8 +5,18 @@ part of presentation;
  */
 abstract class SlideShow
 {
+  /// actual slides in the slide show 
   List<Slide> slides = new List<Slide>();
+  /**
+   * background slides that aren't just for scenery
+   * or aren't part of the normal slide progression and logic
+   * slides in background shouldn't be affected by transitions
+   */
+  List<Slide> background = new List<Slide>();
+  /// this virtual camera controls the position and orientation of the viewer relative to the 3d scene 
   Camera cam;
+  
+  Slide get currentSlide();
   
   SlideShow(Element viewBox)
   {
@@ -16,12 +26,10 @@ abstract class SlideShow
   /**
    * Creates a new Slide object from a String of html
    */
-  static Slide makeSlideFromHtml(String Html, num scale, num x, num y, num z, num h, num p, num r)
+  static Slide makeSlideFromHtml(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slideElement = new DivElement();
-    slideElement.innerHTML = Html;
-    //slideElement.style.height = "1px";
-    //slideElement.style.width = "1px";
+    slideElement.innerHTML = html;
     return makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
   }
   
@@ -36,9 +44,9 @@ abstract class SlideShow
   /**
    * Creates a new Slide object from a String of html and adds it to the end of the presentation
    */
-  void addHtmlSlide(String Html, num scale, num x, num y, num z, num h, num p, num r)
+  void addHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
-    var slide = makeSlideFromHtml(Html, scale, x, y, z, h, p, r);
+    var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
     this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.slides.add(slide);
   }
@@ -51,6 +59,26 @@ abstract class SlideShow
     var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
     this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
     this.slides.add(slide);
+  }
+  
+  /**
+   * Create new slide from HTML and add to scene in separate background list
+   */
+  void addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
+  {
+    var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
+    this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
+    this.background.add(slide);
+  }
+  
+  /**
+   * Create new slide from a DOM element and add to scene in separate background list
+   */
+  void addBackgroundElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
+  {
+    var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
+    this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
+    this.background.add(slide);
   }
   
   /**

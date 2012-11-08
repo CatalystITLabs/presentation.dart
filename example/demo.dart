@@ -5,6 +5,7 @@ import '../lib/presentation.dart';
 
 num rotatePos = 0;
 
+/// makes a div with overflowing content and a scrollbar
 Element testScrollBarContent()
 {
   var element = new DivElement();
@@ -28,6 +29,7 @@ Element testScrollBarContent()
   return element;
 }
 
+/// makes an EmbedElement with another web page
 Element testEmbedContent()
 {
   var elem = new EmbedElement();
@@ -42,6 +44,9 @@ Element testEmbedContent()
 }
 
 void main() {
+  // right now something fails silently with TransitionSlideShow
+  // document.on.keyDown event never even triggers
+  //var presentation = new TransitionSlideShow(query("#render"));
   var presentation = new BasicSlideShow(query("#render"));
   
   
@@ -58,6 +63,10 @@ void main() {
   presentation.addHtmlSlide("Slide10",1.0, 700.0, 150.0,  300.0,  70.0,70.0,450.0);
   presentation.addElementSlide(testEmbedContent(), 1.0, 400.0, 300.0,  -600.0,   30.0,0.0,360.0);
   presentation.addElementSlide(testScrollBarContent(), 1.0, -500, 500, 500, 0, 0, 0);
+  
+  var element = new ImageElement();
+  element.src = "http://stephenlujan.com/banners/scan4.png";
+  presentation.addBackgroundElementSlide(element, 5.0, 0, 1000, -1000, 0, 45, 0);
   
   /*
   presentation.addHtmlSlide("Slide1", 1.0, -300.0,  -300.0, -300.0,  0.0,0.0,0.0);
