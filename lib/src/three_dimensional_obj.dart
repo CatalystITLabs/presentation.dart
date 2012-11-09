@@ -18,7 +18,12 @@ class ThreeDimensionalObj {
     rotation = new Vec3(pitch, heading, roll);
   }
   
-  //copy(ThreeDimensionalObj other);
+  ThreeDimensionalObj copy(ThreeDimensionalObj other)
+  {
+    scale = other.scale;
+    position.copy(other.position);
+    rotation.copy(other.rotation);
+  }
   
   String get transformString
   {

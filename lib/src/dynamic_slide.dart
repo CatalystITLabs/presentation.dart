@@ -12,20 +12,16 @@ class DynamicSlide extends Slide{
    */
   num onGainFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
+    //ignore if we're already in focus
+    if (inFocus)
+      return 0;
+    
     //opacity
     super.onGainFocus(transitionDuration, slideShow);
     
-    //mark old position
-    oldPosition;
-    oldPosition
-    ..scale = this.scale
-    // home position
-    ..position = this.position
-    // home rotation
-    ..rotation = this.rotation;
-    
-    //move slide toward camera
-    this.move(transitionDuration, slideShow.cam.position.x, slideShow.cam.position.y, slideShow.cam.position.z, slideShow.cam.rotation.x, slideShow.cam.rotation.y, slideShow.cam.rotation.z);
+    //mark old position and rotation before moving to camera
+    oldPosition.copy(this);
+    this.moveToCamera(transitionDuration, slideShow.cam);
   }
   
   /**
@@ -34,6 +30,10 @@ class DynamicSlide extends Slide{
    */
   num onLoseFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
+    //ignore if we're already out of focus
+    if (!inFocus)
+      return 0;
+    
     //transparency
     super.onLoseFocus(transitionDuration, slideShow);
     

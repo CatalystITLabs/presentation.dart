@@ -11,9 +11,11 @@ class Vec3
   Vec3(this.x, this.y, this.z);
   
   ///returns the sum of two vectors
-  Vec3 operator + (Vec3 other)
+  Vec3 copy (Vec3 other)
   {
-    return new Vec3(x + other.x, y + other.y, z + other.z);
+    this.x = other.x;
+    this.y = other.y;
+    this.z = other.z;
   }
   
   ///gets the length of the vector

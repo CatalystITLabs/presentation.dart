@@ -33,13 +33,17 @@ abstract class SlideShow
     return makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
   }
   
+  bool useDynamic = false;
   /**
    * Creates a new Slide object from a DOM element
    */
   Slide makeSlideFromElement(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
-    //var slideType = DynamicSlide;
-    return new StaticSlide(slideElement, scale,x,y,z,h,p,r);
+    //useDynamic = !useDynamic;
+    if (useDynamic)
+      return new DynamicSlide(slideElement, scale,x,y,z,h,p,r);
+    else
+      return new StaticSlide(slideElement, scale,x,y,z,h,p,r); 
   }
   
   /**

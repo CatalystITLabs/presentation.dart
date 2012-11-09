@@ -1,10 +1,9 @@
 part of presentation;
 
-/**
- * A slide of content for presentation.
- */
+/// A slide of content for presentation.
 class Slide extends ThreeDimensionalObj {
   Element element;
+  bool inFocus;
   
   Slide(this.element, num scale, num x, num y, num z, num h, num p, num r) : super(scale, x, y, z, h, p, r)
   {
@@ -15,8 +14,7 @@ class Slide extends ThreeDimensionalObj {
     this.setTransform();
   }
   
-  
-  ///Reposition the virtual camera to a new place and rotation
+  /// Reposition the virtual camera to a new place and rotation
   void move(num time, num x, num y, num z, num xr, num yr, num zr)
   {
     this.position
@@ -30,6 +28,15 @@ class Slide extends ThreeDimensionalObj {
     this.element.style   
     ..transition = "${time}s";
     this.setTransform();
+  }
+  
+  /// Reposition and reorient the slide within the scene to center it in front of the camera
+  void moveToCamera(num time, Camera cam)
+  {
+    //move slide toward camera, compensating for height and width of the slide
+    var x = cam.position.x - this.element.clientWidth / 2;
+    var y = cam.position.y - this.element.clientHeight / 2;
+    this.move(time, x, y, cam.position.z, cam.rotation.x, cam.rotation.y, cam.rotation.z);
   }
 
   setTransform()
@@ -47,9 +54,12 @@ class Slide extends ThreeDimensionalObj {
    */
   num onGainFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
-    element.style
-    ..transition ="opacity ${transitionDuration}s ease-in-out"
-    ..opacity = "1.0";
+      if (inFocus)
+        return 0;
+      element.style
+      ..transition ="opacity ${transitionDuration}s ease-in-out"
+      ..opacity = "1.0";
+      inFocus = true;
   }
   
   /**
@@ -58,8 +68,11 @@ class Slide extends ThreeDimensionalObj {
    */
   num onLoseFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
-    element.style
-    ..transition ="opacity ${transitionDuration}s ease-in-out"
-    ..opacity = "0.4";
+      if (!inFocus)
+        return 0;
+      element.style
+      ..transition ="opacity ${transitionDuration}s ease-in-out"
+      ..opacity = "0.4";
+      inFocus = false;
   }
 }

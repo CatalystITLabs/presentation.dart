@@ -19,6 +19,7 @@ class Camera extends ThreeDimensionalObj {
     ..position = "relative"
     //preserve-3d will make objects in the scene maintain their positions and rotations relative to the scene and thus eachother
     ..transformStyle = "preserve-3d";
+    this.move(0, 0, 0, 0, 0, 0, 0);
   }
   
   /// get the width of the viewBox
@@ -45,8 +46,15 @@ class Camera extends ThreeDimensionalObj {
    ///Reposition the virtual camera to a new place and rotation
   void move(num time, num x, num y, num z, num xr, num yr, num zr)
   {
+    this.position
+    ..x = x
+    ..y = y
+    ..z = z;
+    this.rotation
+    ..x = xr
+    ..y = yr
+    ..z = zr;
     //We simulate moving the camera by actually moving and rotating the scene.
-      
     var sceneScale = 1.0;
     var translateScale = 1.0;
     var originScale = 1;
