@@ -20,7 +20,7 @@ class BasicSlideShow extends SlideShow
     var slide = this.currentSlide;
     this.onFocus(slide, transitionDuration);
     
-    this.cam.focusOnSlide(slide, transitionDuration);
+    //this.cam.focusOnSlide(slide, transitionDuration);
   }
   
   /**

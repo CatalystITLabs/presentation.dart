@@ -13,7 +13,6 @@ class TransitionSlideShow extends SlideShow
   
   void next()
   {
-    print (transitions.length);
     if (transitions.length < 1)
       return;
     // run transition

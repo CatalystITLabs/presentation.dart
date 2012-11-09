@@ -38,7 +38,7 @@ abstract class SlideShow
    */
   static Slide makeSlideFromElement(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
-    return new Slide(slideElement, scale,x,y,z,h,p,r);
+    return new DynamicSlide(slideElement, scale,x,y,z,h,p,r);
   }
   
   /**
@@ -67,7 +67,7 @@ abstract class SlideShow
   void addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
-    this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
+    this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.background.add(slide);
   }
   
@@ -89,9 +89,9 @@ abstract class SlideShow
     for(var otherSlide in this.slides)
     {
       if (slide != otherSlide)
-        otherSlide.onLoseFocus(transitionDuration);
+        otherSlide.onLoseFocus(transitionDuration, this);
     }
-    slide.onGainFocus(transitionDuration);
+    slide.onGainFocus(transitionDuration, this);
   }
   
   /**

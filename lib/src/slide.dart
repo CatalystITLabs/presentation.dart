@@ -3,7 +3,7 @@ part of presentation;
 /**
  * A slide of content for presentation.
  */
-class Slide extends Object {
+class Slide extends ThreeDimensionalObj {
   Element element;
   
   Slide(this.element, num scale, num x, num y, num z, num h, num p, num r) : super(scale, x, y, z, h, p, r)
@@ -12,6 +12,23 @@ class Slide extends Object {
     this.element.style
     ..position = "absolute"
     ..transformStyle = "preserve-3d";
+    this.setTransform();
+  }
+  
+  
+  ///Reposition the virtual camera to a new place and rotation
+  void move(num time, num x, num y, num z, num xr, num yr, num zr)
+  {
+    this.position
+    ..x = x
+    ..y = y
+    ..z = z;
+    this.rotation
+    ..x = xr
+    ..y = yr
+    ..z = zr;
+    this.element.style   
+    ..transition = "${time}s";
     this.setTransform();
   }
 
@@ -28,7 +45,7 @@ class Slide extends Object {
    * Performs actions when this slide gains focus
    * Returns the duration of the actions performed
    */
-  num onGainFocus([num transitionDuration = 0.7])
+  num onGainFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
     element.style
     ..transition ="opacity ${transitionDuration}s ease-in-out"
@@ -39,7 +56,7 @@ class Slide extends Object {
    *  Performs actions when this slide loses focus
    *  Returns the duration of the actions performed
    */
-  num onLoseFocus([num transitionDuration = 0.7])
+  num onLoseFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
     element.style
     ..transition ="opacity ${transitionDuration}s ease-in-out"

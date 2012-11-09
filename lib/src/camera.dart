@@ -2,7 +2,7 @@ part of presentation;
 
 
 ///virtual camera to control the view of the scene
-class Camera extends Object {
+class Camera extends ThreeDimensionalObj {
   /// The render acts as a window into the 3d scene and controls the perspective of the virtual "camera"
   Element viewBox;
   /// The scene is used to collect items in 3d space to render and goes inside the viewBox in the DOM
@@ -61,8 +61,6 @@ class Camera extends Object {
     ..transformOriginX = "${(x * originScale).toInt()}px"
     ..transformOriginY = "${(y * originScale).toInt()}px"
     ..transformOriginZ = "${(z * originScale).toInt()}px"
-    
-
 
     //Rather than move the camera to the left we have to move the scene to the right etc.
     //Note that rotations have to be done in the reverse order to get back to (0,0,0)
