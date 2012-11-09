@@ -26,7 +26,7 @@ abstract class SlideShow
   /**
    * Creates a new Slide object from a String of html
    */
-  static Slide makeSlideFromHtml(String html, num scale, num x, num y, num z, num h, num p, num r)
+  Slide makeSlideFromHtml(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slideElement = new DivElement();
     slideElement.innerHTML = html;
@@ -36,9 +36,10 @@ abstract class SlideShow
   /**
    * Creates a new Slide object from a DOM element
    */
-  static Slide makeSlideFromElement(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
+  Slide makeSlideFromElement(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
-    return new DynamicSlide(slideElement, scale,x,y,z,h,p,r);
+    //var slideType = DynamicSlide;
+    return new StaticSlide(slideElement, scale,x,y,z,h,p,r);
   }
   
   /**
@@ -47,8 +48,7 @@ abstract class SlideShow
   void addHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
-    this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
-    this.slides.add(slide);
+    addSlide(slide);
   }
   
   /**
@@ -57,7 +57,15 @@ abstract class SlideShow
   void addElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
-    this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
+    addSlide(slide);
+  }
+  
+  /**
+   * Add a slide to the presentation and its scene
+   */
+  void addSlide(Slide slide)
+  {
+    this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.slides.add(slide);
   }
   
@@ -67,8 +75,7 @@ abstract class SlideShow
   void addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
-    this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
-    this.background.add(slide);
+    addBackgroundSlide(slide);
   }
   
   /**
@@ -77,7 +84,15 @@ abstract class SlideShow
   void addBackgroundElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
-    this.cam.scene.insertAdjacentElement("beforeEnd", slideElement);
+    addBackgroundSlide(slide);
+  }
+  
+  /**
+   * Add a slide to scene as a background
+   */
+  void addBackgroundSlide(Slide slide)
+  {
+    this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.background.add(slide);
   }
   
