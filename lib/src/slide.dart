@@ -3,9 +3,9 @@ part of presentation;
 /// A slide of content for presentation.
 class Slide extends ThreeDimensionalObj {
   Element element;
-  bool inFocus;
+  bool inFocus = false;
   
-  Slide(this.element, num scale, num x, num y, num z, num h, num p, num r) : super(scale, x, y, z, h, p, r)
+  Slide(this.element, [num scale = 1, num x = 0, num y = 0, num z = 0, num heading = 0, num pitch = 0, num roll = 0]) : super(scale, x, y, z, heading, pitch, roll)
   {
     this.element.classes.add("object");
     this.element.style

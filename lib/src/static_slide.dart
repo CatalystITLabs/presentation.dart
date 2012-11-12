@@ -1,7 +1,7 @@
 part of presentation;
 
 class StaticSlide extends Slide{
-  StaticSlide(Element element, num scale, num x, num y, num z, num h, num p, num r) : super(element, scale, x, y, z, h, p, r);
+  StaticSlide(Element element, [num scale = 1, num x = 0, num y = 0, num z = 0, num heading = 0, num pitch = 0, num roll = 0]) : super(element, scale, x, y, z, heading, pitch, roll);
   
   /**
    * Performs actions when this slide gains focus

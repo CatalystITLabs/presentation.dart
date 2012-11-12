@@ -2,9 +2,9 @@ part of presentation;
 
 class DynamicSlide extends Slide{
   
-  DynamicSlide(Element element, num scale, num x, num y, num z, num h, num p, num r) : super(element, scale, x, y, z, h, p, r);
+  DynamicSlide(Element element, [num scale = 1, num x = 0, num y = 0, num z = 0, num heading = 0, num pitch = 0, num roll = 0]) : super(element, scale, x, y, z, heading, pitch, roll);
   
-  ThreeDimensionalObj oldPosition = new ThreeDimensionalObj(0,0,0,0,0,0,0);
+  ThreeDimensionalObj oldState = new ThreeDimensionalObj(0,0,0,0,0,0,0);
   
   /**
    * Performs actions when this slide gains focus
@@ -20,7 +20,7 @@ class DynamicSlide extends Slide{
     super.onGainFocus(transitionDuration, slideShow);
     
     //mark old position and rotation before moving to camera
-    oldPosition.copy(this);
+    oldState.copy(this);
     this.moveToCamera(transitionDuration, slideShow.cam);
   }
   
@@ -38,6 +38,6 @@ class DynamicSlide extends Slide{
     super.onLoseFocus(transitionDuration, slideShow);
     
     //go home
-    this.move(transitionDuration, oldPosition.position.x, oldPosition.position.y, oldPosition.position.z, oldPosition.rotation.x, oldPosition.rotation.y, oldPosition.rotation.z);
+    this.move(transitionDuration, oldState.position.x, oldState.position.y, oldState.position.z, oldState.rotation.x, oldState.rotation.y, oldState.rotation.z);
   }
 }

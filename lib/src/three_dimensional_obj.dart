@@ -12,7 +12,7 @@ class ThreeDimensionalObj {
   // pitch (x axis rotation)
   // roll (z axis rotation)
   
-  ThreeDimensionalObj(this.scale, num x, num y, num z, num heading, num pitch, num roll)
+  ThreeDimensionalObj([this.scale = 1, num x = 0, num y = 0, num z = 0, num heading = 0, num pitch = 0, num roll = 0])
   {
     position = new Vec3(x,y,z);
     rotation = new Vec3(pitch, heading, roll);
