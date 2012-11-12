@@ -7,14 +7,23 @@ class Slide extends ThreeDimensionalObj {
   
   Slide(this.element, [num scale = 1, num x = 0, num y = 0, num z = 0, num heading = 0, num pitch = 0, num roll = 0]) : super(scale, x, y, z, heading, pitch, roll)
   {
-    this.element.classes.add("object");
+    // use application styling for slides
+    this.element.classes.add("slide");
+    
+    // don't leave required styling up to the external settings though
     this.element.style
     ..position = "absolute"
     ..transformStyle = "preserve-3d";
+    
+    //set initial positon and rotation
     this.setTransform();
+    
+    //start out of focus
+    this.inFocus = true;
+    this.onLoseFocus(0);
   }
   
-  /// Reposition the virtual camera to a new place and rotation
+  /// Reposition the Slide to a new place and rotation within the scene
   void move(num time, num x, num y, num z, num xr, num yr, num zr)
   {
     this.position
