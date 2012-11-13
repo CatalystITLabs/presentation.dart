@@ -2,7 +2,7 @@
 body {
   background-color: #F8F8F8;
   font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: normal;
   /*line-height: 1.2em;*/
   margin: 15px;
@@ -14,8 +14,9 @@ p {
 
 /* render acts as a window into the 3d scene and controls the perspective of the virtual "camera" */
 #render {
+  font-size: 1em;
   width: 95%;
-  height: 500px;
+  height: 31em;
   position: relative;
   margin: auto;
   border: 1px solid #ccc;
@@ -29,9 +30,16 @@ p {
   -webkit-perspective: 800px;
 }
 
+/* common css for all slides */
 .slide {
   font-size: 10em;
   line-height: 0.9em;
   text-align: center;
+  /*width: 50%;*/
+  /*height: 25em;*/
+  /*border: 2px solid #aaa;*/
+  /*background-color: rgba(150,150,240,60);*/
   margin: 0px 0px 0px 0px;
+  padding: 0.1em;
+  overflowY = "auto";
 }
