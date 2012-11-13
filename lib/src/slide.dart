@@ -7,7 +7,7 @@ class Slide extends ThreeDimensionalObj {
   
   Slide(this.element, [num scale = 1, num x = 0, num y = 0, num z = 0, num heading = 0, num pitch = 0, num roll = 0]) : super(scale, x, y, z, heading, pitch, roll)
   {
-    // use application styling for slides
+    // use application specific styling for slides
     this.element.classes.add("slide");
     
     // don't leave required styling up to the external settings though

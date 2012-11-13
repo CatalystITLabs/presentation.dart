@@ -1,5 +1,17 @@
 part of presentation;
 
+SlideShow _lastCreatedSlideShow;
+
+/**
+ * Returns the last SlideShow instantiated.
+ * It is not a true singleton because it will not instantiate
+ * for you or limit instantiation to one object.
+ */
+getSlideShow()
+{
+  return _lastCreatedSlideShow;
+}
+
 /**
  * a series of slides collected and maintains as a 3d scene.
  */
@@ -7,12 +19,14 @@ abstract class SlideShow
 {
   /// actual slides in the slide show 
   List<Slide> slides = new List<Slide>();
+  
   /**
    * background slides that aren't just for scenery
    * or aren't part of the normal slide progression and logic
    * slides in background shouldn't be affected by transitions
    */
   List<Slide> background = new List<Slide>();
+  
   /// this virtual camera controls the position and orientation of the viewer relative to the 3d scene 
   Camera cam;
   
@@ -21,6 +35,7 @@ abstract class SlideShow
   SlideShow(Element viewBox)
   {
     this.cam = new Camera(viewBox);
+    _lastCreatedSlideShow = this;
   }
   
   /**
@@ -49,55 +64,61 @@ abstract class SlideShow
   /**
    * Creates a new Slide object from a String of html and adds it to the end of the presentation
    */
-  void addHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
+  Slide addHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
     addSlide(slide);
+    return slide;
   }
   
   /**
    * Creates a new Slide object from a DOM element and adds it to the end of the presentation
    */
-  void addElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
+  Slide addElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
     addSlide(slide);
+    return slide;
   }
   
   /**
    * Add a slide to the presentation and its scene
    */
-  void addSlide(Slide slide)
+  Slide addSlide(Slide slide)
   {
     this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.slides.add(slide);
+    return slide;
   }
   
   /**
    * Create new slide from HTML and add to scene in separate background list
    */
-  void addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
+  Slide addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
     addBackgroundSlide(slide);
+    return slide;
   }
   
   /**
    * Create new slide from a DOM element and add to scene in separate background list
    */
-  void addBackgroundElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
+  Slide addBackgroundElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
     addBackgroundSlide(slide);
+    return slide;
   }
   
   /**
    * Add a slide to scene as a background
    */
-  void addBackgroundSlide(Slide slide)
+  Slide addBackgroundSlide(Slide slide)
   {
     this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.background.add(slide);
+    return slide;
   }
   
   /**
