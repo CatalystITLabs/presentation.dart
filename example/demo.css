@@ -32,8 +32,10 @@ p {
 
 /* common css for all slides */
 .slide {
+  width: 90%;
+  /*height: 25em;*/
   font-size: 10em;
-  line-height: 0.9em;
+  line-height: 1.0em;
   text-align: center;
   /*width: 50%;*/
   /*height: 25em;*/
@@ -41,5 +43,14 @@ p {
   /*background-color: rgba(150,150,240,60);*/
   margin: 0px 0px 0px 0px;
   padding: 0.1em;
-  overflowY = "auto";
+  overflow-y: auto;
+}
+
+.backgroundSlide {
+  font-size: 10em;
+  line-height: 0.9em;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
 }

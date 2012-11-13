@@ -86,8 +86,14 @@ abstract class SlideShow
    */
   Slide addSlide(Slide slide)
   {
+    // start out of focus
+    slide.inFocus = true;
+    slide.onLoseFocus(0);
+    
+    // add to scene and slides list
     this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.slides.add(slide);
+    
     return slide;
   }
   
@@ -96,9 +102,9 @@ abstract class SlideShow
    */
   Slide addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
-    var slide = makeSlideFromHtml(html, scale, x, y, z, h, p, r);
-    addBackgroundSlide(slide);
-    return slide;
+    var slideElement = new DivElement();
+    slideElement.innerHTML = html;
+    return addBackgroundElementSlide(slideElement, scale, x, y, z, h, p, r);
   }
   
   /**
@@ -106,7 +112,7 @@ abstract class SlideShow
    */
   Slide addBackgroundElementSlide(Element slideElement, num scale, num x, num y, num z, num h, num p, num r)
   {
-    var slide = makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
+    var slide = new Slide(slideElement, scale,x,y,z,h,p,r); 
     addBackgroundSlide(slide);
     return slide;
   }
@@ -116,6 +122,11 @@ abstract class SlideShow
    */
   Slide addBackgroundSlide(Slide slide)
   {
+    //TODO: less hackish styling for slides vs background
+    slide.element.classes.remove("slide");
+    slide.element.classes.add("backgroundSlide");
+    
+    //add to scene and background list
     this.cam.scene.insertAdjacentElement("beforeEnd", slide.element);
     this.background.add(slide);
     return slide;

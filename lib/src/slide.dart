@@ -17,10 +17,6 @@ class Slide extends ThreeDimensionalObj {
     
     //set initial positon and rotation
     this.setTransform();
-    
-    //start out of focus
-    this.inFocus = true;
-    this.onLoseFocus(0);
   }
   
   /// Reposition the Slide to a new place and rotation within the scene

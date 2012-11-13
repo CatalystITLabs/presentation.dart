@@ -23,9 +23,7 @@ Element testScrollBarContent()
   </p>""";
   
   element.style.height = "10em";
-  element.style.width = "15em";
   element.style.fontSize = "3em";
-  element.style.overflowY = "auto";
   return element;
 }
 
