@@ -54,3 +54,13 @@ p {
   padding: 0;
   overflow: visible;
 }
+
+/* The slide in focus gains this style */ 
+.focused {
+  opacity: 1;
+}
+
+/* Non-background out of focus slides should use this style. */ 
+.unfocused {
+  opacity: 0.3; 
+}

@@ -42,8 +42,6 @@ Element testEmbedContent()
 }
 
 void main() {
-  // right now something fails silently with TransitionSlideShow
-  // document.on.keyDown event never even triggers
   //var presentation = new TransitionSlideShow(query("#render"));
   var presentation = new BasicSlideShow(query("#render"));
   

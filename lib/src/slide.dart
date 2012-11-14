@@ -62,8 +62,9 @@ class Slide extends ThreeDimensionalObj {
       if (inFocus)
         return 0;
       element.style
-      ..transition ="opacity ${transitionDuration}s ease-in-out"
-      ..opacity = "1.0";
+      ..transition ="${transitionDuration}s ease-in-out";
+      element.classes.add("focused");
+      element.classes.remove("unfocused");
       inFocus = true;
   }
   
@@ -76,8 +77,9 @@ class Slide extends ThreeDimensionalObj {
       if (!inFocus)
         return 0;
       element.style
-      ..transition ="opacity ${transitionDuration}s ease-in-out"
-      ..opacity = "0.4";
+      ..transition = "${transitionDuration}s ease-in-out";
+      element.classes.add("unfocused");
+      element.classes.remove("focused");
       inFocus = false;
   }
 }
