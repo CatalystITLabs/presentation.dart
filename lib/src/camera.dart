@@ -76,7 +76,7 @@ class Camera extends ThreeDimensionalObj {
   }
   
   ///Transition the camera to view a slide centered and normalized
-  focusOnSlide(Slide slide, num time)
+  lookAtSlide(Slide slide, num time)
   {
     //center view on the center of the slide
     var xOffset = slide.element.clientWidth ~/ 2;

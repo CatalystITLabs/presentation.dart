@@ -10,7 +10,7 @@ class StaticSlide extends Slide{
   num onGainFocus([num transitionDuration = 0.7, SlideShow slideShow])
   {
     super.onGainFocus(transitionDuration, slideShow);
-    slideShow.cam.focusOnSlide(this, transitionDuration);
+    slideShow.cam.lookAtSlide(this, transitionDuration);
   }
   
   /**

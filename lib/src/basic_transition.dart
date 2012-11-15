@@ -6,13 +6,13 @@ class BasicTransition extends Transition {
 
   num forward(Camera cam)
   {
-    cam.focusOnSlide(to, duration);
+    cam.lookAtSlide(to, duration);
     return duration;
   }
   
   num reverse(Camera cam)
   {
-    cam.focusOnSlide(from, duration / 2.0);
+    cam.lookAtSlide(from, duration / 2.0);
     return duration / 2.0;
   }
 }
