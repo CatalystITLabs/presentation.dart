@@ -1,3 +1,8 @@
+html {
+  height: 95%;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: #F8F8F8;
@@ -5,20 +10,36 @@ body {
   font-size: 1em;
   font-weight: normal;
   /*line-height: 1.2em;*/
-  margin: 15px;
+  margin: 0;
+  padding: 0;
+  height: 95%;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 1em;
+}
+
+h1 {
+  text-align: center;
 }
 
 p {
   color: #333;
 }
 
+#header {
+  height: 15%  
+}
+
 /* render acts as a window into the 3d scene and controls the perspective of the virtual "camera" */
 #render {
   font-size: 1em;
   width: 95%;
-  height: 31em;
+  /*height: 31em;*/
+  height: 84%;
   position: relative;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid #ccc;
   background-color: #DDDDDD;
   overflow-y:hidden;
@@ -33,7 +54,7 @@ p {
 /* common css for all slides */
 .slide {
   width: 90%;
-  /*height: 25em;*/
+  max-height: 100%;
   font-size: 10em;
   line-height: 1.0em;
   text-align: center;
