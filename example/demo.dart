@@ -47,7 +47,7 @@ void main() {
   
   
   //Add a series of slides
-  presentation.addHtmlSlide("Slide1", 1.0, 0.0,   0.0,    20000.0, 0.0,0.0,0.0);
+  presentation.addHtmlSlide("Use the left and right arrow keys.", 1.0, 0.0,   0.0,    20000.0, 0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide2", 1.0, -300.0,0.0,    0.0,     0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide3", 1.0, 300.0, 0.0,    0.0,     0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide4", 1.0, 0.0,   200.0,  0.0,     0.0,0.0,0.0);
