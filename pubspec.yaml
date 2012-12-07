@@ -2,4 +2,4 @@ name: presentation
 description: Presentation framework using css3 3d animations
 
 #dependencies:
-#  unittest: { sdk: unittest }
+#  unittest: any
