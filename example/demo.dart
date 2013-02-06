@@ -33,8 +33,8 @@ Element testEmbedContent()
   var elem = new EmbedElement();
   
   //elem.src="https://github.com/StephenLujan/presentation.dart"; //Github disallows iframes :(
-  //elem.src="http://stephenlujan.com/";
-  elem.src="http://catalystitservices.com/";
+  elem.src="http://stephenlujan.com/";
+  //elem.src="http://catalystitservices.com/"; //this site have error in chrome
   //elem.width="1150";
   elem.width="95%";
   elem.height="500";
