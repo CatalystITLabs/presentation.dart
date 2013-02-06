@@ -9,7 +9,7 @@ num rotatePos = 0;
 Element testScrollBarContent()
 {
   var element = new DivElement();
-  element.innerHTML = """
+  element.innerHtml = """
   <p>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus erat, scelerisque nec volutpat sit amet, feugiat ut nibh. Vivamus vitae euismod nunc. Vestibulum aliquam, nulla id laoreet porttitor, dolor elit vestibulum tellus, nec dictum mi sem eget tellus. Fusce venenatis vehicula tincidunt. Sed consequat tempus sagittis. Aliquam pulvinar viverra lacus, fringilla vulputate tortor volutpat eu. Duis sagittis, erat vitae porttitor interdum, leo dui hendrerit ipsum, id mattis nulla orci scelerisque felis. Nunc in velit id nisl viverra mattis. Pellentesque porta nibh ac nulla fringilla in aliquam sem adipiscing. Nulla dapibus gravida convallis.
   </p><p>
@@ -76,12 +76,12 @@ void main() {
   presentation.start();
 
   // Handle key events.
-  document.on.keyDown.add((KeyboardEvent event) {
-    switch (event.keyIdentifier) {
-      case KeyName.LEFT:
+  document.onKeyDown.listen((KeyboardEvent event) {
+    switch (event.keyCode) {
+      case KeyCode.LEFT:
         presentation.previous();
         break;
-      case KeyName.RIGHT:
+      case KeyCode.RIGHT:
         presentation.next();
         break;
     }
