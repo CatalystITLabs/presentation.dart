@@ -1,5 +1,7 @@
 name: presentation
 description: Presentation framework using css3 3d animations
+dependencies:
+  browser: any
 
 #dependencies:
 #  unittest: any
