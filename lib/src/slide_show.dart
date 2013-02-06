@@ -44,7 +44,7 @@ abstract class SlideShow
   Slide makeSlideFromHtml(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slideElement = new DivElement();
-    slideElement.innerHTML = html;
+    slideElement.innerHtml = html;
     return makeSlideFromElement(slideElement, scale, x, y, z, h, p, r);
   }
   
@@ -103,7 +103,7 @@ abstract class SlideShow
   Slide addBackgroundHtmlSlide(String html, num scale, num x, num y, num z, num h, num p, num r)
   {
     var slideElement = new DivElement();
-    slideElement.innerHTML = html;
+    slideElement.innerHtml = html;
     return addBackgroundElementSlide(slideElement, scale, x, y, z, h, p, r);
   }
   
