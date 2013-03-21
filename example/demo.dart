@@ -20,7 +20,7 @@ Element testScrollBarContent()
   Aenean lectus justo, volutpat vitae congue consequat, sodales sed ipsum. Integer eget diam sit amet mauris ullamcorper pharetra. Sed lobortis diam et odio bibendum suscipit. Sed non tellus dolor. Curabitur eget quam purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer sagittis, felis in euismod aliquet, est erat pretium tellus, a congue leo nunc at dolor.
   </p>""";
   
-  element.style.height = "10em";
+  element.style.height = "90%";
   element.style.fontSize = "3em";
   return element;
 }
@@ -33,17 +33,15 @@ Element testEmbedContent()
   //elem.src="https://github.com/StephenLujan/presentation.dart"; //Github disallows iframes :(
   elem.src="http://stephenlujan.com/";
   //elem.src="http://catalystitservices.com/"; //this site have error in chrome
-  //elem.width="1150";
   elem.width="95%";
-  elem.height="500";
+  elem.height="90%";
   return elem;
 }
 
 void main() {
   //var presentation = new TransitionSlideShow(query("#render"));
   var presentation = new BasicSlideShow(query("#render"));
-  
-  
+   
   //Add a series of slides
   presentation.addHtmlSlide("Use the left and right arrow keys.", 1.0, 0.0,   0.0,    20000.0, 0.0,0.0,0.0);
   presentation.addHtmlSlide("Slide2", 1.0, -300.0,0.0,    0.0,     0.0,0.0,0.0);
