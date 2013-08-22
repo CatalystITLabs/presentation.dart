@@ -20,7 +20,7 @@ Element testScrollBarContent()
   Aenean lectus justo, volutpat vitae congue consequat, sodales sed ipsum. Integer eget diam sit amet mauris ullamcorper pharetra. Sed lobortis diam et odio bibendum suscipit. Sed non tellus dolor. Curabitur eget quam purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer sagittis, felis in euismod aliquet, est erat pretium tellus, a congue leo nunc at dolor.
   </p>""";
   
-  element.style.height = "10em";
+  element.style.height = "90%";
   element.style.fontSize = "3em";
   return element;
 }
